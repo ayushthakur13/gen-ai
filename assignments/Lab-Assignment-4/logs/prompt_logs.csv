@@ -1,0 +1,364 @@
+strategy,input,run_number,output,prompt_tokens,completion_tokens,latency,format_compliant
+zero_shot,I absolutely love this product,1,Positive,86,54,0.3270578384399414,True
+zero_shot,I absolutely love this product,2,Positive,86,55,0.21860003471374512,True
+zero_shot,I absolutely love this product,3,Positive,86,41,0.49468207359313965,True
+zero_shot,This is the worst experience ever,1,Negative,87,45,0.20620393753051758,True
+zero_shot,This is the worst experience ever,2,Negative,87,48,0.22452211380004883,True
+zero_shot,This is the worst experience ever,3,Negative,87,50,0.3633890151977539,True
+zero_shot,It works fine but nothing special,1,Negative,87,176,0.48390913009643555,True
+zero_shot,It works fine but nothing special,2,Positive,87,116,0.37816810607910156,True
+zero_shot,It works fine but nothing special,3,Negative,87,120,0.4003772735595703,True
+zero_shot,Amazing quality and great service,1,Positive,86,41,0.1945180892944336,True
+zero_shot,Amazing quality and great service,2,Positive,86,48,0.22412109375,True
+zero_shot,Amazing quality and great service,3,Positive,86,33,0.3915519714355469,True
+zero_shot,I regret buying this,1,Negative,85,56,0.3054671287536621,True
+zero_shot,I regret buying this,2,Negative,85,44,0.19824790954589844,True
+zero_shot,I regret buying this,3,Negative,85,57,0.31424903869628906,True
+zero_shot,"Not bad, could be better",1,Positive,87,138,0.5134849548339844,True
+zero_shot,"Not bad, could be better",2,Positive,87,108,0.5091731548309326,True
+zero_shot,"Not bad, could be better",3,Negative,87,88,0.5148890018463135,True
+zero_shot,Completely useless and disappointing,1,"{
+  ""sentiment"": ""Negative"",
+  ""explanation"": ""The text uses strong negative language ('useless', 'disappointing') indicating an unfavorable opinion.""
+}",85,78,0.40717601776123047,False
+zero_shot,Completely useless and disappointing,2,Negative,85,34,0.17460012435913086,True
+zero_shot,Completely useless and disappointing,3,Negative,85,47,0.2028977870941162,True
+zero_shot,Highly recommend this to everyone,1,Positive,86,59,0.4424257278442383,True
+zero_shot,Highly recommend this to everyone,2,Positive,86,81,0.30731987953186035,True
+zero_shot,Highly recommend this to everyone,3,Positive,86,46,0.40952491760253906,True
+zero_shot,Terrible customer support,1,Negative,85,51,0.20968031883239746,True
+zero_shot,Terrible customer support,2,Negative,85,46,0.27719616889953613,True
+zero_shot,Terrible customer support,3,Negative,85,60,0.3328678607940674,True
+zero_shot,Pretty decent overall,1,Positive,84,47,0.20817804336547852,True
+zero_shot,Pretty decent overall,2,Positive,84,34,0.4050617218017578,True
+zero_shot,Pretty decent overall,3,Positive,84,54,0.41060709953308105,True
+zero_shot,I am very happy with this purchase,1,Positive,88,49,2.5589139461517334,True
+zero_shot,I am very happy with this purchase,2,Positive,88,46,2.260406970977783,True
+zero_shot,I am very happy with this purchase,3,Positive,88,54,2.2775328159332275,True
+zero_shot,This broke after one day,1,Negative,86,46,2.2648611068725586,True
+zero_shot,This broke after one day,2,Negative,86,40,2.241205930709839,True
+zero_shot,This broke after one day,3,Negative,86,37,2.2384161949157715,True
+zero_shot,It exceeded my expectations,1,Positive,85,40,2.542325019836426,True
+zero_shot,It exceeded my expectations,2,Positive,85,39,2.3532679080963135,True
+zero_shot,It exceeded my expectations,3,Positive,85,41,2.2686007022857666,True
+zero_shot,Waste of money,1,Negative,84,42,2.2577199935913086,True
+zero_shot,Waste of money,2,Negative,84,61,2.3362419605255127,True
+zero_shot,Waste of money,3,Negative,84,46,2.3816068172454834,True
+zero_shot,It does what it promises,1,Positive,86,59,2.3874449729919434,True
+zero_shot,It does what it promises,2,Positive,86,56,2.422929048538208,True
+zero_shot,It does what it promises,3,**Positive**,86,69,2.5362632274627686,False
+zero_shot,Very frustrating to use,1,Negative,85,54,2.5357232093811035,True
+zero_shot,Very frustrating to use,2,Negative,85,41,2.375804901123047,True
+zero_shot,Very frustrating to use,3,Negative,85,39,2.2847108840942383,True
+zero_shot,Fantastic performance,1,Positive,83,36,2.3742659091949463,True
+zero_shot,Fantastic performance,2,Positive,83,41,2.243975877761841,True
+zero_shot,Fantastic performance,3,Positive,83,51,2.2717251777648926,True
+zero_shot,Not worth the price,1,Negative,85,32,2.447730302810669,True
+zero_shot,Not worth the price,2,Negative,85,41,2.409090995788574,True
+zero_shot,Not worth the price,3,Negative,85,43,2.2728378772735596,True
+zero_shot,Superb build quality,1,Positive,84,30,2.292651653289795,True
+zero_shot,Superb build quality,2,Positive,84,41,2.2442989349365234,True
+zero_shot,Superb build quality,3,Positive,84,35,2.718189001083374,True
+zero_shot,Mediocre at best,1,Negative,85,43,2.4664549827575684,True
+zero_shot,Mediocre at best,2,Negative,85,63,2.4408020973205566,True
+zero_shot,Mediocre at best,3,Negative,85,47,2.458961248397827,True
+role_based,I absolutely love this product,1,Positive,94,42,2.2454848289489746,True
+role_based,I absolutely love this product,2,Positive,94,60,2.4641332626342773,True
+role_based,I absolutely love this product,3,Positive,94,49,2.2689242362976074,True
+role_based,This is the worst experience ever,1,Negative,95,70,2.3398149013519287,True
+role_based,This is the worst experience ever,2,Negative,95,50,2.458211898803711,True
+role_based,This is the worst experience ever,3,Negative,95,51,2.2751247882843018,True
+role_based,It works fine but nothing special,1,Positive,95,89,2.370710849761963,True
+role_based,It works fine but nothing special,2,Negative,95,97,2.4198100566864014,True
+role_based,It works fine but nothing special,3,Negative,95,175,2.7144241333007812,True
+role_based,Amazing quality and great service,1,Positive,94,48,2.264425039291382,True
+role_based,Amazing quality and great service,2,Positive,94,49,2.394487142562866,True
+role_based,Amazing quality and great service,3,Positive,94,48,2.256263017654419,True
+role_based,I regret buying this,1,Negative,93,48,2.451575756072998,True
+role_based,I regret buying this,2,Negative,93,56,2.2720441818237305,True
+role_based,I regret buying this,3,Negative,93,43,2.3555831909179688,True
+role_based,"Not bad, could be better",1,Positive,95,143,2.485956907272339,True
+role_based,"Not bad, could be better",2,Negative,95,174,2.716583013534546,True
+role_based,"Not bad, could be better",3,Positive,95,168,2.969200849533081,True
+role_based,Completely useless and disappointing,1,Negative,93,48,2.276254892349243,True
+role_based,Completely useless and disappointing,2,Negative,93,45,2.434216022491455,True
+role_based,Completely useless and disappointing,3,Negative,93,47,2.259002208709717,True
+role_based,Highly recommend this to everyone,1,Positive,94,47,2.9273531436920166,True
+role_based,Highly recommend this to everyone,2,Positive,94,45,2.391702175140381,True
+role_based,Highly recommend this to everyone,3,Positive,94,116,2.803966999053955,True
+role_based,Terrible customer support,1,Negative,93,46,2.4959590435028076,True
+role_based,Terrible customer support,2,Negative,93,51,2.379304885864258,True
+role_based,Terrible customer support,3,Negative,93,54,2.2677440643310547,True
+role_based,Pretty decent overall,1,Positive,92,50,2.26488995552063,True
+role_based,Pretty decent overall,2,Positive,92,42,2.2509970664978027,True
+role_based,Pretty decent overall,3,Positive,92,65,2.6368629932403564,True
+role_based,I am very happy with this purchase,1,Positive,96,50,2.3776631355285645,True
+role_based,I am very happy with this purchase,2,Positive,96,55,2.337294816970825,True
+role_based,I am very happy with this purchase,3,Positive,96,45,2.6416971683502197,True
+role_based,This broke after one day,1,Negative,94,46,2.4738810062408447,True
+role_based,This broke after one day,2,Negative,94,40,2.2417221069335938,True
+role_based,This broke after one day,3,Negative,94,41,2.2642438411712646,True
+role_based,It exceeded my expectations,1,Positive,93,62,2.4575788974761963,True
+role_based,It exceeded my expectations,2,Positive,93,54,2.457009792327881,True
+role_based,It exceeded my expectations,3,Positive,93,45,2.457231044769287,True
+role_based,Waste of money,1,Negative,92,47,2.366057872772217,True
+role_based,Waste of money,2,Negative,92,60,2.446640729904175,True
+role_based,Waste of money,3,Negative,92,50,2.5604429244995117,True
+role_based,It does what it promises,1,Positive,94,50,2.355043888092041,True
+role_based,It does what it promises,2,Positive,94,70,2.3551650047302246,True
+role_based,It does what it promises,3,Positive,94,49,2.866461753845215,True
+role_based,Very frustrating to use,1,Negative,93,65,2.45812726020813,True
+role_based,Very frustrating to use,2,Negative,93,47,2.4570858478546143,True
+role_based,Very frustrating to use,3,Negative,93,44,2.45740008354187,True
+role_based,Fantastic performance,1,Positive,91,41,2.4575979709625244,True
+role_based,Fantastic performance,2,Positive,91,46,2.6621952056884766,True
+role_based,Fantastic performance,3,Positive,91,41,2.362359046936035,True
+role_based,Not worth the price,1,Negative,93,62,2.4507088661193848,True
+role_based,Not worth the price,2,Negative,93,44,2.4592180252075195,True
+role_based,Not worth the price,3,Negative,93,48,2.4558868408203125,True
+role_based,Superb build quality,1,Positive,92,46,2.5597822666168213,True
+role_based,Superb build quality,2,Positive,92,46,2.5609989166259766,True
+role_based,Superb build quality,3,Positive,92,43,2.2587809562683105,True
+role_based,Mediocre at best,1,Negative,93,41,2.44740891456604,True
+role_based,Mediocre at best,2,Negative,93,46,2.8712358474731445,True
+role_based,Mediocre at best,3,Negative,93,51,2.2772128582000732,True
+few_shot,I absolutely love this product,1,Positive,99,122,2.4290030002593994,True
+few_shot,I absolutely love this product,2,Positive,99,83,2.5645430088043213,True
+few_shot,I absolutely love this product,3,Positive,99,89,2.559338092803955,True
+few_shot,This is the worst experience ever,1,Negative,100,107,2.457584857940674,True
+few_shot,This is the worst experience ever,2,Negative,100,89,2.560004949569702,True
+few_shot,This is the worst experience ever,3,Negative,100,92,2.35502290725708,True
+few_shot,It works fine but nothing special,1,Neutral,100,115,2.459447145462036,False
+few_shot,It works fine but nothing special,2,Neutral,100,146,2.5335869789123535,False
+few_shot,It works fine but nothing special,3,Neutral,100,143,2.7616851329803467,False
+few_shot,Amazing quality and great service,1,Positive,99,73,2.7925970554351807,True
+few_shot,Amazing quality and great service,2,Positive,99,72,2.3555800914764404,True
+few_shot,Amazing quality and great service,3,Positive,99,94,2.560269832611084,True
+few_shot,I regret buying this,1,Negative,98,132,2.7660627365112305,True
+few_shot,I regret buying this,2,Negative,98,85,2.3598320484161377,True
+few_shot,I regret buying this,3,Negative,98,103,2.451375722885132,True
+few_shot,"Not bad, could be better",1,Neutral,100,174,2.970017671585083,False
+few_shot,"Not bad, could be better",2,Neutral,100,155,2.559741258621216,False
+few_shot,"Not bad, could be better",3,Neutral,100,161,2.5285542011260986,False
+few_shot,Completely useless and disappointing,1,Negative.,98,82,2.38634991645813,False
+few_shot,Completely useless and disappointing,2,Negative,98,87,2.5611279010772705,True
+few_shot,Completely useless and disappointing,3,Negative,98,114,3.070127010345459,True
+few_shot,Highly recommend this to everyone,1,Positive,99,85,2.3558197021484375,True
+few_shot,Highly recommend this to everyone,2,Positive,99,71,2.457350254058838,True
+few_shot,Highly recommend this to everyone,3,Positive,99,100,2.686100959777832,True
+few_shot,Terrible customer support,1,Negative,98,65,2.3851280212402344,True
+few_shot,Terrible customer support,2,Negative,98,95,3.0195157527923584,True
+few_shot,Terrible customer support,3,Negative,98,72,2.309147834777832,True
+few_shot,Pretty decent overall,1,Positive,97,101,2.3758349418640137,True
+few_shot,Pretty decent overall,2,Positive,97,122,2.5467450618743896,True
+few_shot,Pretty decent overall,3,Positive,97,140,2.4943432807922363,True
+few_shot,I am very happy with this purchase,1,Positive,101,88,2.5723602771759033,True
+few_shot,I am very happy with this purchase,2,Positive,101,106,2.5398290157318115,True
+few_shot,I am very happy with this purchase,3,Positive,101,123,2.5673670768737793,True
+few_shot,This broke after one day,1,Negative,99,85,2.5607199668884277,True
+few_shot,This broke after one day,2,Negative,99,120,2.419542074203491,True
+few_shot,This broke after one day,3,Negative,99,111,2.494959831237793,True
+few_shot,It exceeded my expectations,1,Positive,98,92,2.382810115814209,True
+few_shot,It exceeded my expectations,2,Positive,98,87,2.5329627990722656,True
+few_shot,It exceeded my expectations,3,Positive,98,85,2.373331069946289,True
+few_shot,Waste of money,1,**Negative**,97,89,2.439082145690918,False
+few_shot,Waste of money,2,Negative,97,89,2.3561248779296875,True
+few_shot,Waste of money,3,Text: Waste of money → Negative,97,83,2.560352087020874,False
+few_shot,It does what it promises,1,Positive,99,152,2.758057117462158,True
+few_shot,It does what it promises,2,Positive,99,151,2.8720130920410156,True
+few_shot,It does what it promises,3,Positive,99,122,2.457908868789673,True
+few_shot,Very frustrating to use,1,Text: Very frustrating to use → Negative,98,109,2.458099842071533,False
+few_shot,Very frustrating to use,2,Negative,98,105,2.610863208770752,True
+few_shot,Very frustrating to use,3,Negative,98,73,2.3120110034942627,True
+few_shot,Fantastic performance,1,Positive,96,60,2.3642611503601074,True
+few_shot,Fantastic performance,2,Positive,96,84,2.4401609897613525,True
+few_shot,Fantastic performance,3,Positive,96,88,2.3549036979675293,True
+few_shot,Not worth the price,1,Negative,98,90,2.458366870880127,True
+few_shot,Not worth the price,2,Negative,98,76,2.466649055480957,True
+few_shot,Not worth the price,3,Negative,98,81,2.5505847930908203,True
+few_shot,Superb build quality,1,Positive,97,93,2.6796820163726807,True
+few_shot,Superb build quality,2,Positive,97,108,2.4401490688323975,True
+few_shot,Superb build quality,3,Positive,97,97,2.457185983657837,True
+few_shot,Mediocre at best,1,Negative,98,136,2.9703171253204346,True
+few_shot,Mediocre at best,2,Negative,98,176,2.7657580375671387,True
+few_shot,Mediocre at best,3,Negative,98,154,3.3773810863494873,True
+structured,I absolutely love this product,1,"{
+  ""sentiment"": ""Positive""
+}",101,58,2.356257915496826,True
+structured,I absolutely love this product,2,"{
+  ""sentiment"": ""Positive""
+}",101,55,2.2772858142852783,True
+structured,I absolutely love this product,3,"{
+  ""sentiment"": ""Positive""
+}",101,55,2.389461040496826,True
+structured,This is the worst experience ever,1,"{
+  ""sentiment"": ""Negative""
+}",102,76,2.397224187850952,True
+structured,This is the worst experience ever,2,"{
+  ""sentiment"": ""Negative""
+}",102,70,2.6626949310302734,True
+structured,This is the worst experience ever,3,"{
+  ""sentiment"": ""Negative""
+}",102,77,2.3550169467926025,True
+structured,It works fine but nothing special,1,"{
+  ""sentiment"": ""Positive""
+}",102,150,2.9781711101531982,True
+structured,It works fine but nothing special,2,"{
+  ""sentiment"": ""Positive""
+}",102,157,2.5515599250793457,True
+structured,It works fine but nothing special,3,"{
+  ""sentiment"": ""Positive""
+}",102,150,2.662113904953003,True
+structured,Amazing quality and great service,1,"{
+  ""sentiment"": ""Positive""
+}",101,68,2.354475736618042,True
+structured,Amazing quality and great service,2,"{
+  ""sentiment"": ""Positive""
+}",101,80,2.354653835296631,True
+structured,Amazing quality and great service,3,"{
+  ""sentiment"": ""Positive""
+}",101,86,2.350425958633423,True
+structured,I regret buying this,1,"{
+  ""sentiment"": ""Negative""
+}",100,108,2.4623658657073975,True
+structured,I regret buying this,2,"{
+  ""sentiment"": ""Negative""
+}",100,113,2.5923571586608887,True
+structured,I regret buying this,3,"{
+  ""sentiment"": ""Negative""
+}",100,75,2.346405029296875,True
+structured,"Not bad, could be better",1,"{
+  ""sentiment"": ""Positive""
+}",102,132,2.5385749340057373,True
+structured,"Not bad, could be better",2,"{
+  ""sentiment"": ""Negative""
+}",102,200,2.9678850173950195,True
+structured,"Not bad, could be better",3,"{
+  ""sentiment"": ""Positive""
+}",102,168,2.868849992752075,True
+structured,Completely useless and disappointing,1,"{
+  ""sentiment"": ""Negative""
+}",100,76,2.455909252166748,True
+structured,Completely useless and disappointing,2,"{
+  ""sentiment"": ""Negative""
+}",100,53,2.4575469493865967,True
+structured,Completely useless and disappointing,3,"{
+  ""sentiment"": ""Negative""
+}",100,61,2.558940887451172,True
+structured,Highly recommend this to everyone,1,"{
+  ""sentiment"": ""Positive""
+}",101,100,2.6641061305999756,True
+structured,Highly recommend this to everyone,2,"{
+  ""sentiment"": ""Positive""
+}",101,90,2.4562439918518066,True
+structured,Highly recommend this to everyone,3,"{
+  ""sentiment"": ""Positive""
+}",101,60,2.355051040649414,True
+structured,Terrible customer support,1,"{
+  ""sentiment"": ""Negative""
+}",100,59,2.284539222717285,True
+structured,Terrible customer support,2,"{
+  ""sentiment"": ""Negative""
+}",100,67,2.4263808727264404,True
+structured,Terrible customer support,3,"{
+  ""sentiment"": ""Negative""
+}",100,50,2.7658488750457764,True
+structured,Pretty decent overall,1,"{
+  ""sentiment"": ""Positive""
+}",99,75,2.4558792114257812,True
+structured,Pretty decent overall,2,"{
+  ""sentiment"": ""Positive""
+}",99,91,2.459214210510254,True
+structured,Pretty decent overall,3,"{
+  ""sentiment"": ""Positive""
+}",99,63,2.5384087562561035,True
+structured,I am very happy with this purchase,1,"{
+  ""sentiment"": ""Positive""
+}",103,79,2.375386953353882,True
+structured,I am very happy with this purchase,2,"{
+  ""sentiment"": ""Positive""
+}",103,73,2.558716058731079,True
+structured,I am very happy with this purchase,3,"{
+  ""sentiment"": ""Positive""
+}",103,79,2.765641927719116,True
+structured,This broke after one day,1,"{
+  ""sentiment"": ""Negative""
+}",101,50,2.662898063659668,True
+structured,This broke after one day,2,"{
+  ""sentiment"": ""Negative""
+}",101,80,2.5607011318206787,True
+structured,This broke after one day,3,"{
+  ""sentiment"": ""Negative""
+}",101,65,2.5586979389190674,True
+structured,It exceeded my expectations,1,"{
+  ""sentiment"": ""Positive""
+}",100,49,2.282261848449707,True
+structured,It exceeded my expectations,2,"{
+  ""sentiment"": ""Positive""
+}",100,85,2.530910015106201,True
+structured,It exceeded my expectations,3,"{
+  ""sentiment"": ""Positive""
+}",100,81,2.354301929473877,True
+structured,Waste of money,1,"{
+  ""sentiment"": ""Negative""
+}",99,127,2.665599822998047,True
+structured,Waste of money,2,"{
+  ""sentiment"": ""Negative""
+}",99,94,2.453951835632324,True
+structured,Waste of money,3,"{
+  ""sentiment"": ""Negative""
+}",99,76,2.3191120624542236,True
+structured,It does what it promises,1,"{
+  ""sentiment"": ""Positive""
+}",101,64,2.3931288719177246,True
+structured,It does what it promises,2,"{
+  ""sentiment"": ""Positive""
+}",101,79,2.4573960304260254,True
+structured,It does what it promises,3,"{
+  ""sentiment"": ""Positive""
+}",101,88,2.5592751502990723,True
+structured,Very frustrating to use,1,"{
+  ""sentiment"": ""Negative""
+}",100,58,2.354525089263916,True
+structured,Very frustrating to use,2,"{
+  ""sentiment"": ""Negative""
+}",100,55,2.383573055267334,True
+structured,Very frustrating to use,3,"{
+  ""sentiment"": ""Negative""
+}",100,50,2.428011178970337,True
+structured,Fantastic performance,1,"{
+  ""sentiment"": ""Positive""
+}",98,77,2.3881561756134033,True
+structured,Fantastic performance,2,"{
+  ""sentiment"": ""Positive""
+}",98,104,2.4187090396881104,True
+structured,Fantastic performance,3,"{
+  ""sentiment"": ""Positive""
+}",98,81,2.7729618549346924,True
+structured,Not worth the price,1,"{
+  ""sentiment"": ""Negative""
+}",100,52,2.261752128601074,True
+structured,Not worth the price,2,"{
+  ""sentiment"": ""Negative""
+}",100,72,2.344515085220337,True
+structured,Not worth the price,3,"{
+  ""sentiment"": ""Negative""
+}",100,131,2.457726001739502,True
+structured,Superb build quality,1,"{
+  ""sentiment"": ""Positive""
+}",99,75,2.355177879333496,True
+structured,Superb build quality,2,"{
+  ""sentiment"": ""Positive""
+}",99,59,2.4568519592285156,True
+structured,Superb build quality,3,"{
+  ""sentiment"": ""Positive""
+}",99,57,2.4576399326324463,True
+structured,Mediocre at best,1,"{
+  ""sentiment"": ""Negative""
+}",100,76,2.3222239017486572,True
+structured,Mediocre at best,2,"{
+  ""sentiment"": ""Negative""
+}",100,62,2.3894002437591553,True
+structured,Mediocre at best,3,"{
+  ""sentiment"": ""Negative""
+}",100,85,2.8974688053131104,True
