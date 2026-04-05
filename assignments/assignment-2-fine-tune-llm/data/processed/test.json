@@ -1,442 +1,442 @@
 [
   {
-    "question": "What practical use case best illustrates Evaluation Set? in a concise classroom style for model evaluation.",
-    "answer": "A concise example is validation split used for model selection."
+    "question": "When would RAG matter in an ML workflow?",
+    "answer": "RAG is retrieval-augmented generation that grounds answers using external documents. For example, vector search over knowledge base before generation."
   },
   {
-    "question": "Give a short exam-ready answer for Instruction Tuning. with emphasis on trade-offs for a beginner in AI.",
-    "answer": "In AI/ML, Instruction Tuning refers to fine-tuning on instruction-response pairs to improve following user instructions."
+    "question": "How is Overfitting different from a related approach?",
+    "answer": "Overfitting differs from related approaches because regularization and more data improve generalization."
   },
   {
-    "question": "Provide a concise QA-style definition for Positional Encoding. in 1-2 sentences for a university assignment.",
-    "answer": "In AI/ML, Positional Encoding refers to an approach to inject token order information into transformer inputs."
+    "question": "Why is Unsupervised Learning useful in practice?",
+    "answer": "Unsupervised Learning is learning structure from unlabeled data. For example, customer segmentation with clustering."
   },
   {
-    "question": "What is Fine-tuning in AI/ML?",
-    "answer": "Fine-tuning can be defined as adapting a pretrained model on a smaller task-specific dataset."
+    "question": "What makes Masked Language Modeling different from related ideas?",
+    "answer": "Masked Language Modeling differs from related approaches because causal models generate strictly left-to-right."
   },
   {
-    "question": "What is one limitation or trade-off related to Embedding? for first-year ML students for interview preparation.",
-    "answer": "A key difference is that one-hot vectors are sparse and do not encode similarity."
+    "question": "Provide a simple example of Causal Language Modeling.",
+    "answer": "A practical example of Causal Language Modeling is GPT-style autoregressive generation."
   },
   {
-    "question": "Give a short exam-ready answer for Masked Language Modeling. using concise technical wording for interview preparation.",
-    "answer": "Masked Language Modeling is training objective that predicts intentionally masked tokens."
-  },
-  {
-    "question": "What is the key intuition behind LoRA? using concise technical wording in LLM application design.",
-    "answer": "LoRA is a parameter-efficient method that trains low-rank adapter matrices instead of all model weights."
-  },
-  {
-    "question": "Explain Machine Learning with a practical example.",
-    "answer": "One common use case is spam filtering and demand forecasting."
-  },
-  {
-    "question": "Why is Machine Learning important in modern AI systems? with one concrete example in production ML workflows.",
-    "answer": "Machine Learning is a subset of AI where models learn patterns from data instead of explicit rules. A practical example is spam filtering and demand forecasting."
-  },
-  {
-    "question": "What practical use case best illustrates Temperature? with focus on model behavior in production ML workflows.",
-    "answer": "One common use case is lower temperature yields more deterministic outputs."
-  },
-  {
-    "question": "Provide a concise QA-style definition for BLEU. using concise technical wording for model evaluation.",
-    "answer": "BLEU can be defined as an n-gram overlap metric commonly used for text generation evaluation."
-  },
-  {
-    "question": "How is Cross-Entropy Loss different from a related alternative?",
-    "answer": "A key difference is that MSE is more common in regression tasks."
-  },
-  {
-    "question": "Explain Exact Match in one technical sentence. for first-year ML students for practical deployment.",
-    "answer": "In AI/ML, Exact Match refers to the fraction of predictions that exactly match the reference after normalization."
-  },
-  {
-    "question": "Explain Causal Language Modeling with a practical example.",
-    "answer": "One common use case is GPT-style autoregressive generation."
-  },
-  {
-    "question": "Differentiate Masked Language Modeling from a close alternative in ML. using concise technical wording for a university assignment.",
-    "answer": "The main distinction is that causal models generate strictly left-to-right."
-  },
-  {
-    "question": "Why is Batch Size important in modern AI systems? without unnecessary jargon for exam revision.",
-    "answer": "Batch Size is the number of training samples processed before each optimizer step. A practical example is small batches for memory-constrained local training. It differs from close alternatives because larger batches can improve throughput but require more memory."
-  },
-  {
-    "question": "What is the key intuition behind Overfitting? as if answering an interview question for a beginner in AI.",
-    "answer": "Overfitting is when a model memorizes training data and generalizes poorly to unseen data."
-  },
-  {
-    "question": "In what way does LoRA affect model behavior? in a concise classroom style in production ML workflows.",
-    "answer": "LoRA is a parameter-efficient method that trains low-rank adapter matrices instead of all model weights."
-  },
-  {
-    "question": "Explain Overfitting with a practical example.",
-    "answer": "A practical example of Overfitting is high train performance but low test performance."
-  },
-  {
-    "question": "What is the key intuition behind Evaluation Set? for technical documentation for a university assignment.",
-    "answer": "Evaluation Set can be defined as a held-out subset used to estimate model performance during training."
-  },
-  {
-    "question": "In what way does Top-p Sampling affect model behavior? for technical documentation for a university assignment.",
-    "answer": "Top-p Sampling is sampling from the smallest token set whose cumulative probability exceeds p. A practical example is p=0.9 nucleus sampling."
-  },
-  {
-    "question": "Define Supervised Learning in one technical sentence.",
-    "answer": "Supervised Learning can be defined as learning from labeled input-output pairs."
-  },
-  {
-    "question": "What practical use case best illustrates Self-Attention? using concise technical wording in LLM application design.",
-    "answer": "One common use case is capturing long-range dependencies in text."
-  },
-  {
-    "question": "Differentiate Fine-tuning from a close alternative in ML. with emphasis on trade-offs in LLM application design.",
-    "answer": "A key difference is that pretraining uses broad corpora and high compute."
-  },
-  {
-    "question": "What is the key intuition behind Positional Encoding? for technical documentation for a university assignment.",
-    "answer": "Positional Encoding is an approach to inject token order information into transformer inputs."
-  },
-  {
-    "question": "Differentiate RAG from a close alternative in ML. for quick revision notes for model evaluation.",
-    "answer": "The main distinction is that pure parametric models rely only on stored training knowledge."
-  },
-  {
-    "question": "When should Transformer be preferred in ML workflows?",
-    "answer": "Transformer is a neural architecture based on self-attention for sequence modeling."
-  },
-  {
-    "question": "In what way does Transformer affect model behavior? with emphasis on trade-offs for a beginner in AI.",
-    "answer": "Transformer is a neural architecture based on self-attention for sequence modeling. A practical example is BERT and GPT families. It differs from close alternatives because RNNs process tokens sequentially while transformers process tokens in parallel."
-  },
-  {
-    "question": "Describe Perplexity for an AI student and include one use case. using concise technical wording for practical deployment.",
-    "answer": "Perplexity is an intrinsic metric measuring how well a language model predicts tokens. A practical example is lower perplexity often indicates better next-token modeling."
-  },
-  {
-    "question": "Give a short exam-ready answer for BLEU. for technical documentation for model evaluation.",
-    "answer": "BLEU is an n-gram overlap metric commonly used for text generation evaluation."
-  },
-  {
-    "question": "What is the key intuition behind Reinforcement Learning? for technical documentation for exam revision.",
-    "answer": "In AI/ML, Reinforcement Learning refers to learning by interacting with an environment to maximize cumulative reward."
-  },
-  {
-    "question": "Provide a concise QA-style definition for RAG. for technical documentation for practical deployment.",
-    "answer": "RAG is retrieval-augmented generation that grounds answers using external documents."
-  },
-  {
-    "question": "Provide a concise QA-style definition for Masked Language Modeling. with one concrete example for exam revision.",
-    "answer": "Masked Language Modeling is training objective that predicts intentionally masked tokens."
-  },
-  {
-    "question": "Describe Transformer for an AI student and include one use case. with emphasis on trade-offs in production ML workflows.",
-    "answer": "Transformer is a neural architecture based on self-attention for sequence modeling. A practical example is BERT and GPT families. It differs from close alternatives because RNNs process tokens sequentially while transformers process tokens in parallel."
-  },
-  {
-    "question": "Why is LoRA important in modern AI systems? using concise technical wording for practical deployment.",
-    "answer": "LoRA is a parameter-efficient method that trains low-rank adapter matrices instead of all model weights. A practical example is updating attention projections with rank-decomposed adapters. It differs from close alternatives because full fine-tuning updates every parameter."
-  },
-  {
-    "question": "How is Generalization different from a related alternative?",
-    "answer": "The main distinction is that memorization does not transfer reliably."
-  },
-  {
-    "question": "Explain Gradient Accumulation with a practical example.",
-    "answer": "A practical example of Gradient Accumulation is accumulating 8 steps with batch size 2."
-  },
-  {
-    "question": "Give a short exam-ready answer for Gradient Accumulation. for technical documentation for exam revision.",
+    "question": "What does Gradient Accumulation mean?",
     "answer": "Gradient Accumulation is simulating a larger effective batch by accumulating gradients across mini-batches."
   },
   {
-    "question": "Define Tokenization in one technical sentence.",
-    "answer": "In AI/ML, Tokenization refers to splitting text into model-consumable units called tokens."
+    "question": "How would Tokenization be applied in an AI system?",
+    "answer": "Tokenization is splitting text into model-consumable units called tokens. For example, byte-pair encoding used by many GPT models."
   },
   {
-    "question": "Provide a concise QA-style definition for Inference Optimization. with focus on model behavior in production ML workflows.",
-    "answer": "Inference Optimization can be defined as techniques to improve generation speed or memory usage at serving time."
+    "question": "What is Positional Encoding in AI/ML?",
+    "answer": "Positional Encoding is an approach to inject token order information into transformer inputs."
   },
   {
-    "question": "What is one limitation or trade-off related to Tokenization? with emphasis on trade-offs for a beginner in AI.",
-    "answer": "The main distinction is that word-level tokenization has larger vocabularies and more OOV issues."
+    "question": "How is LoRA different from a related approach?",
+    "answer": "LoRA differs from related approaches because full fine-tuning updates every parameter."
   },
   {
-    "question": "Explain Temperature in one technical sentence. with focus on model behavior for exam revision.",
-    "answer": "Temperature is a scaling factor controlling randomness in token probabilities."
+    "question": "Why is Inference Optimization useful in practice?",
+    "answer": "Inference Optimization is techniques to improve generation speed or memory usage at serving time. For example, quantization and caching key-value states."
   },
   {
-    "question": "Give a short exam-ready answer for Tokenization. with emphasis on trade-offs for interview preparation.",
-    "answer": "Tokenization can be defined as splitting text into model-consumable units called tokens."
+    "question": "Give a technically precise definition of Artificial Intelligence and include one concrete example.",
+    "answer": "Artificial Intelligence is the field of building systems that perform tasks requiring human-like intelligence. For example, rule-based expert systems and modern learning-based agents."
   },
   {
-    "question": "Why is Tokenization important in modern AI systems? for quick revision notes for interview preparation.",
-    "answer": "Tokenization is splitting text into model-consumable units called tokens. A practical example is byte-pair encoding used by many GPT models. It differs from close alternatives because word-level tokenization has larger vocabularies and more OOV issues."
+    "question": "Name one application of BLEU.",
+    "answer": "A practical example of BLEU is machine translation quality estimation."
   },
   {
-    "question": "Differentiate Perplexity from a close alternative in ML. for quick revision notes for exam revision.",
-    "answer": "The main distinction is that task metrics like BLEU or ROUGE capture output quality differently."
+    "question": "Give one example of Reinforcement Learning.",
+    "answer": "A practical example of Reinforcement Learning is game-playing agents trained with policy optimization."
   },
   {
-    "question": "Explain Machine Learning in one technical sentence. in a concise classroom style for a university assignment.",
-    "answer": "In AI/ML, Machine Learning refers to a subset of AI where models learn patterns from data instead of explicit rules."
+    "question": "Compare Inference Optimization with a close alternative.",
+    "answer": "Inference Optimization differs from related approaches because training optimization focuses on model updates."
   },
   {
-    "question": "Explain Reinforcement Learning in one technical sentence. as if answering an interview question for exam revision.",
-    "answer": "In AI/ML, Reinforcement Learning refers to learning by interacting with an environment to maximize cumulative reward."
+    "question": "What does Positional Encoding mean?",
+    "answer": "Positional Encoding is an approach to inject token order information into transformer inputs."
   },
   {
-    "question": "What is one limitation or trade-off related to Inference Optimization? using concise technical wording for a university assignment.",
-    "answer": "The main distinction is that training optimization focuses on model updates."
+    "question": "What does Top-k Sampling mean?",
+    "answer": "Top-k Sampling is sampling from the k most probable next tokens."
   },
   {
-    "question": "What practical use case best illustrates Unsupervised Learning? for first-year ML students for exam revision.",
-    "answer": "One common use case is customer segmentation with clustering."
-  },
-  {
-    "question": "Define Unsupervised Learning in one technical sentence.",
-    "answer": "Unsupervised Learning can be defined as learning structure from unlabeled data."
-  },
-  {
-    "question": "Provide a concise QA-style definition for Inference Optimization. as if answering an interview question for interview preparation.",
-    "answer": "In AI/ML, Inference Optimization refers to techniques to improve generation speed or memory usage at serving time."
-  },
-  {
-    "question": "What is one limitation or trade-off related to Positional Encoding? with emphasis on trade-offs in LLM application design.",
-    "answer": "The main distinction is that RNNs encode order through recurrence."
-  },
-  {
-    "question": "Why is Overfitting important in modern AI systems? for technical documentation in production ML workflows.",
-    "answer": "Overfitting is when a model memorizes training data and generalizes poorly to unseen data."
-  },
-  {
-    "question": "What is one limitation or trade-off related to Deep Learning? for technical documentation for practical deployment.",
-    "answer": "A key difference is that shallow models often rely more on manual feature engineering."
-  },
-  {
-    "question": "What is the key intuition behind Deep Learning? for quick revision notes for model evaluation.",
-    "answer": "In AI/ML, Deep Learning refers to a class of machine learning that uses multi-layer neural networks."
-  },
-  {
-    "question": "Give a short exam-ready answer for RAG. in a concise classroom style for interview preparation.",
-    "answer": "RAG can be defined as retrieval-augmented generation that grounds answers using external documents."
-  },
-  {
-    "question": "Give a short exam-ready answer for Generalization. with focus on model behavior for a university assignment.",
-    "answer": "Generalization can be defined as a model's ability to perform well on unseen data."
-  },
-  {
-    "question": "Give a short exam-ready answer for BLEU. in a concise classroom style in production ML workflows.",
-    "answer": "BLEU can be defined as an n-gram overlap metric commonly used for text generation evaluation."
-  },
-  {
-    "question": "In what way does Unsupervised Learning affect model behavior? without unnecessary jargon for model evaluation.",
-    "answer": "Unsupervised Learning is learning structure from unlabeled data. A practical example is customer segmentation with clustering."
-  },
-  {
-    "question": "What practical use case best illustrates Batch Size? for technical documentation for exam revision.",
-    "answer": "One common use case is small batches for memory-constrained local training."
-  },
-  {
-    "question": "Differentiate Masked Language Modeling from a close alternative in ML. using concise technical wording for interview preparation.",
-    "answer": "Compared with related alternatives, causal models generate strictly left-to-right."
-  },
-  {
-    "question": "Explain Temperature in one technical sentence. in a concise classroom style in LLM application design.",
-    "answer": "Temperature is a scaling factor controlling randomness in token probabilities."
-  },
-  {
-    "question": "When should Gradient Accumulation be preferred in ML workflows?",
-    "answer": "Gradient Accumulation is simulating a larger effective batch by accumulating gradients across mini-batches. A practical example is accumulating 8 steps with batch size 2. It differs from close alternatives because direct large batches need more VRAM."
-  },
-  {
-    "question": "Differentiate Self-Attention from a close alternative in ML. in a concise classroom style for a university assignment.",
-    "answer": "Compared with related alternatives, fixed-window convolutions have limited direct receptive context."
-  },
-  {
-    "question": "What is one limitation or trade-off related to Top-p Sampling? as if answering an interview question for practical deployment.",
-    "answer": "A key difference is that top-k uses a fixed number of tokens."
-  },
-  {
-    "question": "Explain Unsupervised Learning in one technical sentence. as if answering an interview question for a beginner in AI.",
-    "answer": "In AI/ML, Unsupervised Learning refers to learning structure from unlabeled data."
-  },
-  {
-    "question": "Provide a concise QA-style definition for Overfitting. in a practical engineering tone for exam revision.",
-    "answer": "Overfitting is when a model memorizes training data and generalizes poorly to unseen data."
-  },
-  {
-    "question": "What is the key intuition behind Cross-Entropy Loss? in a concise classroom style for a university assignment.",
-    "answer": "Cross-Entropy Loss is a loss measuring difference between predicted token distribution and true targets."
-  },
-  {
-    "question": "What is one limitation or trade-off related to Machine Learning? for quick revision notes for practical deployment.",
-    "answer": "A key difference is that traditional programming encodes logic manually."
-  },
-  {
-    "question": "Define RAG in one technical sentence.",
-    "answer": "RAG can be defined as retrieval-augmented generation that grounds answers using external documents."
-  },
-  {
-    "question": "Provide a concise QA-style definition for Unsupervised Learning. for first-year ML students for model evaluation.",
-    "answer": "Unsupervised Learning can be defined as learning structure from unlabeled data."
-  },
-  {
-    "question": "What practical use case best illustrates Reinforcement Learning? as if answering an interview question for a university assignment.",
-    "answer": "A concise example is game-playing agents trained with policy optimization."
-  },
-  {
-    "question": "Give a concise example of RAG.",
-    "answer": "One common use case is vector search over knowledge base before generation."
-  },
-  {
-    "question": "Explain Positional Encoding with a practical example.",
-    "answer": "A concise example is sinusoidal vectors added to token embeddings."
-  },
-  {
-    "question": "Explain Inference Optimization in one technical sentence. without unnecessary jargon for model evaluation.",
-    "answer": "In AI/ML, Inference Optimization refers to techniques to improve generation speed or memory usage at serving time."
-  },
-  {
-    "question": "What is Batch Size in AI/ML?",
-    "answer": "Batch Size is the number of training samples processed before each optimizer step."
-  },
-  {
-    "question": "Give a short exam-ready answer for Top-p Sampling. for quick revision notes for interview preparation.",
+    "question": "What does Top-p Sampling mean?",
     "answer": "Top-p Sampling is sampling from the smallest token set whose cumulative probability exceeds p."
   },
   {
-    "question": "Differentiate Causal Language Modeling from a close alternative in ML. for technical documentation in production ML workflows.",
-    "answer": "A key difference is that masked language modeling predicts masked tokens."
+    "question": "How would you explain Exact Match?",
+    "answer": "Exact Match is the fraction of predictions that exactly match the reference after normalization."
   },
   {
-    "question": "What practical use case best illustrates Masked Language Modeling? for technical documentation for practical deployment.",
-    "answer": "A practical example of Masked Language Modeling is BERT pretraining."
+    "question": "What is one key difference between BLEU and a similar method?",
+    "answer": "BLEU differs from related approaches because it may miss semantic correctness when wording differs."
   },
   {
-    "question": "Provide a concise QA-style definition for Machine Learning. with focus on model behavior in production ML workflows.",
+    "question": "What is Evaluation Set in AI/ML?",
+    "answer": "Evaluation Set is a held-out subset used to estimate model performance during training."
+  },
+  {
+    "question": "Give a short definition of Batch Size.",
+    "answer": "Batch Size is the number of training samples processed before each optimizer step."
+  },
+  {
+    "question": "Why is Transformer useful in practice?",
+    "answer": "Transformer is a neural architecture based on self-attention for sequence modeling. For example, BERT and GPT families."
+  },
+  {
+    "question": "Give a short definition of Tokenization.",
+    "answer": "Tokenization is splitting text into model-consumable units called tokens."
+  },
+  {
+    "question": "Why is Evaluation Set useful in practice?",
+    "answer": "Evaluation Set is a held-out subset used to estimate model performance during training. For example, validation split used for model selection."
+  },
+  {
+    "question": "What is one key difference between Masked Language Modeling and a similar method?",
+    "answer": "Masked Language Modeling differs from related approaches because causal models generate strictly left-to-right."
+  },
+  {
+    "question": "What is the practical value of Cross-Entropy Loss?",
+    "answer": "Cross-Entropy Loss is a loss measuring difference between predicted token distribution and true targets. For example, standard objective for language model training."
+  },
+  {
+    "question": "In one technical sentence, what is RAG?",
+    "answer": "RAG is retrieval-augmented generation that grounds answers using external documents."
+  },
+  {
+    "question": "Which example best illustrates Fine-tuning?",
+    "answer": "A practical example of Fine-tuning is tuning a language model for biomedical QA."
+  },
+  {
+    "question": "Give one example of Positional Encoding.",
+    "answer": "A practical example of Positional Encoding is sinusoidal vectors added to token embeddings."
+  },
+  {
+    "question": "In one technical sentence, what is Tokenization?",
+    "answer": "Tokenization is splitting text into model-consumable units called tokens."
+  },
+  {
+    "question": "What is BLEU in AI/ML?",
+    "answer": "BLEU is an n-gram overlap metric commonly used for text generation evaluation."
+  },
+  {
+    "question": "How does Generalization differ from a related approach?",
+    "answer": "Generalization differs from related approaches because memorization does not transfer reliably."
+  },
+  {
+    "question": "Name one application of Learning Rate.",
+    "answer": "A practical example of Learning Rate is 2e-5 in transformer fine-tuning."
+  },
+  {
+    "question": "How would you explain Unsupervised Learning?",
+    "answer": "Unsupervised Learning is learning structure from unlabeled data."
+  },
+  {
+    "question": "How does RAG help in real projects?",
+    "answer": "RAG is retrieval-augmented generation that grounds answers using external documents. For example, vector search over knowledge base before generation."
+  },
+  {
+    "question": "What is the practical value of Fine-tuning?",
+    "answer": "Fine-tuning is adapting a pretrained model on a smaller task-specific dataset. For example, tuning a language model for biomedical QA."
+  },
+  {
+    "question": "What is one key difference between ROUGE-L and a similar method?",
+    "answer": "ROUGE-L differs from related approaches because exact match is stricter and less tolerant to paraphrase."
+  },
+  {
+    "question": "Give one example of Learning Rate.",
+    "answer": "A practical example of Learning Rate is 2e-5 in transformer fine-tuning."
+  },
+  {
+    "question": "Show a real-world use of Temperature.",
+    "answer": "A practical example of Temperature is lower temperature yields more deterministic outputs."
+  },
+  {
+    "question": "Name one application of Fine-tuning.",
+    "answer": "A practical example of Fine-tuning is tuning a language model for biomedical QA."
+  },
+  {
+    "question": "How does Learning Rate help in real projects?",
+    "answer": "Learning Rate is the step size used by the optimizer when updating model weights. For example, 2e-5 in transformer fine-tuning."
+  },
+  {
+    "question": "Compare Gradient Accumulation with a close alternative.",
+    "answer": "Gradient Accumulation differs from related approaches because direct large batches need more VRAM."
+  },
+  {
+    "question": "What is a practical example of Artificial Intelligence?",
+    "answer": "A practical example of Artificial Intelligence is rule-based expert systems and modern learning-based agents."
+  },
+  {
+    "question": "What is Instruction Tuning in AI/ML?",
+    "answer": "Instruction Tuning is fine-tuning on instruction-response pairs to improve following user instructions."
+  },
+  {
+    "question": "What is the practical value of Tokenization?",
+    "answer": "Tokenization is splitting text into model-consumable units called tokens. For example, byte-pair encoding used by many GPT models."
+  },
+  {
+    "question": "What is Top-k Sampling in AI/ML?",
+    "answer": "Top-k Sampling is sampling from the k most probable next tokens."
+  },
+  {
+    "question": "How would you explain Tokenization?",
+    "answer": "Tokenization is splitting text into model-consumable units called tokens."
+  },
+  {
+    "question": "What is Deep Learning in AI/ML?",
+    "answer": "Deep Learning is a class of machine learning that uses multi-layer neural networks."
+  },
+  {
+    "question": "Give a technically precise definition of Generalization and include one concrete example.",
+    "answer": "Generalization is a model's ability to perform well on unseen data. For example, maintaining accuracy on held-out QA questions."
+  },
+  {
+    "question": "What is a practical example of Transformer?",
+    "answer": "A practical example of Transformer is BERT and GPT families."
+  },
+  {
+    "question": "What does Overfitting mean?",
+    "answer": "Overfitting is when a model memorizes training data and generalizes poorly to unseen data."
+  },
+  {
+    "question": "How does Top-p Sampling help in real projects?",
+    "answer": "Top-p Sampling is sampling from the smallest token set whose cumulative probability exceeds p. For example, p=0.9 nucleus sampling."
+  },
+  {
+    "question": "What does LoRA mean?",
+    "answer": "LoRA is a parameter-efficient method that trains low-rank adapter matrices instead of all model weights."
+  },
+  {
+    "question": "Compare Evaluation Set with a close alternative.",
+    "answer": "Evaluation Set differs from related approaches because test set should remain untouched until final reporting."
+  },
+  {
+    "question": "How does Positional Encoding help in real projects?",
+    "answer": "Positional Encoding is an approach to inject token order information into transformer inputs. For example, sinusoidal vectors added to token embeddings."
+  },
+  {
+    "question": "Compare Learning Rate with a close alternative.",
+    "answer": "Learning Rate differs from related approaches because too high causes instability and too low slows learning."
+  },
+  {
+    "question": "How does Unsupervised Learning help in real projects?",
+    "answer": "Unsupervised Learning is learning structure from unlabeled data. For example, customer segmentation with clustering."
+  },
+  {
+    "question": "How does BLEU differ from a related approach?",
+    "answer": "BLEU differs from related approaches because it may miss semantic correctness when wording differs."
+  },
+  {
+    "question": "How would Embedding be applied in an AI system?",
+    "answer": "Embedding is a dense vector representation of tokens, words, or sentences. For example, semantic search using sentence embeddings."
+  },
+  {
+    "question": "Compare RAG with a close alternative.",
+    "answer": "RAG differs from related approaches because pure parametric models rely only on stored training knowledge."
+  },
+  {
+    "question": "Give one contrast between PEFT and a related technique.",
+    "answer": "PEFT differs from related approaches because full fine-tuning is memory-intensive and costlier."
+  },
+  {
+    "question": "Compare Perplexity with a close alternative.",
+    "answer": "Perplexity differs from related approaches because task metrics like BLEU or ROUGE capture output quality differently."
+  },
+  {
+    "question": "How is Evaluation Set different from a related approach?",
+    "answer": "Evaluation Set differs from related approaches because test set should remain untouched until final reporting."
+  },
+  {
+    "question": "How would you explain Top-k Sampling?",
+    "answer": "Top-k Sampling is sampling from the k most probable next tokens."
+  },
+  {
+    "question": "How is Batch Size different from a related approach?",
+    "answer": "Batch Size differs from related approaches because larger batches can improve throughput but require more memory."
+  },
+  {
+    "question": "What is PEFT in AI/ML?",
+    "answer": "PEFT is parameter-efficient fine-tuning techniques for adapting large models with fewer trainable parameters."
+  },
+  {
+    "question": "Give a short definition of Exact Match.",
+    "answer": "Exact Match is the fraction of predictions that exactly match the reference after normalization."
+  },
+  {
+    "question": "In one technical sentence, what is Gradient Accumulation?",
+    "answer": "Gradient Accumulation is simulating a larger effective batch by accumulating gradients across mini-batches."
+  },
+  {
+    "question": "Give one example of Temperature.",
+    "answer": "A practical example of Temperature is lower temperature yields more deterministic outputs."
+  },
+  {
+    "question": "How does Overfitting help in real projects?",
+    "answer": "Overfitting is when a model memorizes training data and generalizes poorly to unseen data. For example, high train performance but low test performance."
+  },
+  {
+    "question": "Give a short definition of Evaluation Set.",
+    "answer": "Evaluation Set is a held-out subset used to estimate model performance during training."
+  },
+  {
+    "question": "What is one key difference between Generalization and a similar method?",
+    "answer": "Generalization differs from related approaches because memorization does not transfer reliably."
+  },
+  {
+    "question": "Give one example of BLEU.",
+    "answer": "A practical example of BLEU is machine translation quality estimation."
+  },
+  {
+    "question": "What is Reinforcement Learning in AI/ML?",
+    "answer": "Reinforcement Learning is learning by interacting with an environment to maximize cumulative reward."
+  },
+  {
+    "question": "What does Masked Language Modeling mean?",
+    "answer": "Masked Language Modeling is training objective that predicts intentionally masked tokens."
+  },
+  {
+    "question": "Name one application of Machine Learning.",
+    "answer": "A practical example of Machine Learning is spam filtering and demand forecasting."
+  },
+  {
+    "question": "How would you explain ROUGE-L?",
+    "answer": "ROUGE-L is a metric based on longest common subsequence overlap between texts."
+  },
+  {
+    "question": "What is one key difference between Temperature and a similar method?",
+    "answer": "Temperature differs from related approaches because higher temperature increases diversity but risk of errors."
+  },
+  {
+    "question": "Provide a simple example of Top-p Sampling.",
+    "answer": "A practical example of Top-p Sampling is p=0.9 nucleus sampling."
+  },
+  {
+    "question": "What is the practical value of Gradient Accumulation?",
+    "answer": "Gradient Accumulation is simulating a larger effective batch by accumulating gradients across mini-batches. For example, accumulating 8 steps with batch size 2."
+  },
+  {
+    "question": "What is a practical example of ROUGE-L?",
+    "answer": "A practical example of ROUGE-L is summarization evaluation."
+  },
+  {
+    "question": "Why is Overfitting useful in practice?",
+    "answer": "Overfitting is when a model memorizes training data and generalizes poorly to unseen data. For example, high train performance but low test performance."
+  },
+  {
+    "question": "Define Prompt Engineering in one sentence.",
+    "answer": "Prompt Engineering is designing prompts to steer model behavior without changing weights."
+  },
+  {
+    "question": "Give one contrast between Top-p Sampling and a related technique.",
+    "answer": "Top-p Sampling differs from related approaches because top-k uses a fixed number of tokens."
+  },
+  {
+    "question": "How would you explain Deep Learning?",
+    "answer": "Deep Learning is a class of machine learning that uses multi-layer neural networks."
+  },
+  {
+    "question": "How does Artificial Intelligence differ from a related approach?",
+    "answer": "Artificial Intelligence differs from related approaches because narrow AI focuses on one task, while AGI would generalize across tasks."
+  },
+  {
+    "question": "Which example best illustrates Temperature?",
+    "answer": "A practical example of Temperature is lower temperature yields more deterministic outputs."
+  },
+  {
+    "question": "What makes Embedding different from related ideas?",
+    "answer": "Embedding differs from related approaches because one-hot vectors are sparse and do not encode similarity."
+  },
+  {
+    "question": "Why do engineers use Causal Language Modeling?",
+    "answer": "Causal Language Modeling is training objective where each token predicts the next token. For example, GPT-style autoregressive generation."
+  },
+  {
+    "question": "How would Reinforcement Learning be applied in an AI system?",
+    "answer": "Reinforcement Learning is learning by interacting with an environment to maximize cumulative reward. For example, game-playing agents trained with policy optimization."
+  },
+  {
+    "question": "What does Fine-tuning mean?",
+    "answer": "Fine-tuning is adapting a pretrained model on a smaller task-specific dataset."
+  },
+  {
+    "question": "Give a technically precise definition of Positional Encoding and include one concrete example.",
+    "answer": "Positional Encoding is an approach to inject token order information into transformer inputs. For example, sinusoidal vectors added to token embeddings."
+  },
+  {
+    "question": "Why is BLEU useful in practice?",
+    "answer": "BLEU is an n-gram overlap metric commonly used for text generation evaluation. For example, machine translation quality estimation."
+  },
+  {
+    "question": "Name one application of Perplexity.",
+    "answer": "A practical example of Perplexity is lower perplexity often indicates better next-token modeling."
+  },
+  {
+    "question": "How does Embedding differ from a related approach?",
+    "answer": "Embedding differs from related approaches because one-hot vectors are sparse and do not encode similarity."
+  },
+  {
+    "question": "Give a short definition of Machine Learning.",
     "answer": "Machine Learning is a subset of AI where models learn patterns from data instead of explicit rules."
   },
   {
-    "question": "Explain Top-k Sampling in one technical sentence. for first-year ML students in production ML workflows.",
-    "answer": "Top-k Sampling is sampling from the k most probable next tokens."
+    "question": "In one technical sentence, what is Learning Rate?",
+    "answer": "Learning Rate is the step size used by the optimizer when updating model weights."
   },
   {
-    "question": "In what way does Perplexity affect model behavior? for technical documentation for a university assignment.",
-    "answer": "Perplexity is an intrinsic metric measuring how well a language model predicts tokens. A practical example is lower perplexity often indicates better next-token modeling."
-  },
-  {
-    "question": "Describe Batch Size for an AI student and include one use case. with emphasis on trade-offs in production ML workflows.",
-    "answer": "Batch Size is the number of training samples processed before each optimizer step."
-  },
-  {
-    "question": "What is one limitation or trade-off related to Transformer? with one concrete example for model evaluation.",
-    "answer": "A key difference is that RNNs process tokens sequentially while transformers process tokens in parallel."
-  },
-  {
-    "question": "What practical use case best illustrates Exact Match? with one concrete example for exam revision.",
-    "answer": "One common use case is extractive QA benchmark scoring."
-  },
-  {
-    "question": "Define Reinforcement Learning in one technical sentence.",
-    "answer": "Reinforcement Learning can be defined as learning by interacting with an environment to maximize cumulative reward."
-  },
-  {
-    "question": "How is Inference Optimization different from a related alternative?",
-    "answer": "The main distinction is that training optimization focuses on model updates."
-  },
-  {
-    "question": "Explain Top-k Sampling in one technical sentence. for technical documentation for interview preparation.",
-    "answer": "Top-k Sampling is sampling from the k most probable next tokens."
-  },
-  {
-    "question": "What is one limitation or trade-off related to Transformer? for technical documentation for practical deployment.",
-    "answer": "The main distinction is that RNNs process tokens sequentially while transformers process tokens in parallel."
-  },
-  {
-    "question": "Define Perplexity in one technical sentence.",
-    "answer": "In AI/ML, Perplexity refers to an intrinsic metric measuring how well a language model predicts tokens."
-  },
-  {
-    "question": "Describe Inference Optimization for an AI student and include one use case. without unnecessary jargon for exam revision.",
-    "answer": "Inference Optimization is techniques to improve generation speed or memory usage at serving time."
-  },
-  {
-    "question": "What is one limitation or trade-off related to Instruction Tuning? using concise technical wording for interview preparation.",
-    "answer": "A key difference is that base pretraining is not optimized for conversational alignment."
-  },
-  {
-    "question": "Provide a concise QA-style definition for Artificial Intelligence. for technical documentation for model evaluation.",
+    "question": "In one technical sentence, what is Artificial Intelligence?",
     "answer": "Artificial Intelligence is the field of building systems that perform tasks requiring human-like intelligence."
   },
   {
-    "question": "In what way does Batch Size affect model behavior? without unnecessary jargon in production ML workflows.",
-    "answer": "Batch Size is the number of training samples processed before each optimizer step."
+    "question": "In one technical sentence, what is Reinforcement Learning?",
+    "answer": "Reinforcement Learning is learning by interacting with an environment to maximize cumulative reward."
   },
   {
-    "question": "Why is Unsupervised Learning important in modern AI systems? with one concrete example for exam revision.",
-    "answer": "Unsupervised Learning is learning structure from unlabeled data. A practical example is customer segmentation with clustering."
-  },
-  {
-    "question": "Describe Hallucination for an AI student and include one use case. for quick revision notes for a beginner in AI.",
-    "answer": "Hallucination is a confident but incorrect model output. A practical example is inventing citations that do not exist. It differs from close alternatives because grounded generation reduces unsupported claims."
+    "question": "What is one key difference between Tokenization and a similar method?",
+    "answer": "Tokenization differs from related approaches because word-level tokenization has larger vocabularies and more OOV issues."
   },
   {
     "question": "What is Overfitting in AI/ML?",
     "answer": "Overfitting is when a model memorizes training data and generalizes poorly to unseen data."
   },
   {
-    "question": "Explain Cross-Entropy Loss with a practical example.",
-    "answer": "One common use case is standard objective for language model training."
+    "question": "Why is Positional Encoding useful in practice?",
+    "answer": "Positional Encoding is an approach to inject token order information into transformer inputs. For example, sinusoidal vectors added to token embeddings."
   },
   {
-    "question": "In what way does Evaluation Set affect model behavior? as if answering an interview question for exam revision.",
-    "answer": "Evaluation Set is a held-out subset used to estimate model performance during training."
+    "question": "How would you explain Positional Encoding?",
+    "answer": "Positional Encoding is an approach to inject token order information into transformer inputs."
   },
   {
-    "question": "Explain RAG with a practical example.",
-    "answer": "One common use case is vector search over knowledge base before generation."
+    "question": "What is the practical value of Positional Encoding?",
+    "answer": "Positional Encoding is an approach to inject token order information into transformer inputs. For example, sinusoidal vectors added to token embeddings."
   },
   {
-    "question": "Explain Top-k Sampling in one technical sentence. with focus on model behavior for a university assignment.",
-    "answer": "In AI/ML, Top-k Sampling refers to sampling from the k most probable next tokens."
+    "question": "Show a real-world use of Deep Learning.",
+    "answer": "A practical example of Deep Learning is image classification with convolutional neural networks."
   },
   {
-    "question": "In what way does Deep Learning affect model behavior? with emphasis on trade-offs for practical deployment.",
-    "answer": "Deep Learning is a class of machine learning that uses multi-layer neural networks. A practical example is image classification with convolutional neural networks. It differs from close alternatives because shallow models often rely more on manual feature engineering."
+    "question": "Name one application of Deep Learning.",
+    "answer": "A practical example of Deep Learning is image classification with convolutional neural networks."
   },
   {
-    "question": "What is the key intuition behind RAG? with focus on model behavior for model evaluation.",
-    "answer": "RAG is retrieval-augmented generation that grounds answers using external documents."
+    "question": "What is the practical value of Deep Learning?",
+    "answer": "Deep Learning is a class of machine learning that uses multi-layer neural networks. For example, image classification with convolutional neural networks."
   },
   {
-    "question": "Give a short exam-ready answer for Perplexity. without unnecessary jargon for exam revision.",
-    "answer": "In AI/ML, Perplexity refers to an intrinsic metric measuring how well a language model predicts tokens."
+    "question": "Why is Causal Language Modeling useful in practice?",
+    "answer": "Causal Language Modeling is training objective where each token predicts the next token. For example, GPT-style autoregressive generation."
   },
   {
-    "question": "Give a short exam-ready answer for Deep Learning. without unnecessary jargon in LLM application design.",
-    "answer": "Deep Learning can be defined as a class of machine learning that uses multi-layer neural networks."
+    "question": "Show a real-world use of Positional Encoding.",
+    "answer": "A practical example of Positional Encoding is sinusoidal vectors added to token embeddings."
   },
   {
-    "question": "Provide a concise QA-style definition for Positional Encoding. in a concise classroom style for model evaluation.",
-    "answer": "In AI/ML, Positional Encoding refers to an approach to inject token order information into transformer inputs."
-  },
-  {
-    "question": "Describe Instruction Tuning for an AI student and include one use case. for technical documentation for exam revision.",
-    "answer": "Instruction Tuning is fine-tuning on instruction-response pairs to improve following user instructions. A practical example is datasets with diverse tasks and explicit prompts."
-  },
-  {
-    "question": "Give a short exam-ready answer for Evaluation Set. in a concise classroom style for interview preparation.",
-    "answer": "In AI/ML, Evaluation Set refers to a held-out subset used to estimate model performance during training."
-  },
-  {
-    "question": "Provide a concise QA-style definition for Masked Language Modeling. with focus on model behavior for a university assignment.",
-    "answer": "Masked Language Modeling can be defined as training objective that predicts intentionally masked tokens."
-  },
-  {
-    "question": "How is Supervised Learning different from a related alternative?",
-    "answer": "A key difference is that unsupervised learning has no target labels."
+    "question": "Compare Fine-tuning with a close alternative.",
+    "answer": "Fine-tuning differs from related approaches because pretraining uses broad corpora and high compute."
   }
 ]

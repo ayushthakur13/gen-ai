@@ -4,9 +4,9 @@ from dataclasses import dataclass
 import torch
 from peft import LoraConfig, TaskType, get_peft_model
 from transformers import (
-    AutoModelForCausalLM,
+    AutoModelForSeq2SeqLM,
     AutoTokenizer,
-    DataCollatorForLanguageModeling,
+    DataCollatorForSeq2Seq,
     Trainer,
     TrainingArguments,
 )
@@ -14,11 +14,11 @@ from transformers import (
 
 @dataclass
 class TrainConfig:
-    model_name: str = "distilgpt2"
+    model_name: str = "google/flan-t5-small"
     output_dir: str = "models"
     logs_dir: str = "outputs/logs"
-    learning_rate: float = 2e-5
-    num_train_epochs: int = 2
+    learning_rate: float = 1e-4
+    num_train_epochs: int = 5
     per_device_train_batch_size: int = 2
     per_device_eval_batch_size: int = 2
     gradient_accumulation_steps: int = 4
@@ -37,18 +37,18 @@ def load_base_model_and_tokenizer(model_name: str):
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
-    model = AutoModelForCausalLM.from_pretrained(model_name)
+    model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
     model.config.pad_token_id = tokenizer.pad_token_id
     return model, tokenizer
 
 
 def apply_lora(model):
     lora_config = LoraConfig(
-        task_type=TaskType.CAUSAL_LM,
-        r=8,
-        lora_alpha=16,
-        lora_dropout=0.1,
-        target_modules=["c_attn", "c_proj"],
+        task_type=TaskType.SEQ_2_SEQ_LM,
+        r=16,
+        lora_alpha=32,
+        lora_dropout=0.05,
+        target_modules=["q", "v"],
         bias="none",
     )
     peft_model = get_peft_model(model, lora_config)
@@ -64,7 +64,7 @@ def train_lora_model(tokenized_datasets, config: TrainConfig):
     peft_model = apply_lora(base_model)
     use_cpu = get_device() == "cpu"
 
-    data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)
+    data_collator = DataCollatorForSeq2Seq(tokenizer=tokenizer, model=peft_model)
 
     training_args = TrainingArguments(
         output_dir=config.output_dir,
@@ -84,6 +84,8 @@ def train_lora_model(tokenized_datasets, config: TrainConfig):
         report_to="none",
         bf16=False,
         fp16=False,
+        warmup_steps=20,
+        weight_decay=0.01,
         seed=config.seed,
         dataloader_pin_memory=False,
         do_train=True,

@@ -3,22 +3,22 @@ from typing import Dict
 
 import torch
 from peft import PeftModel
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
 from src.prompting import build_qa_prompt
 
 
-def load_base_model(model_name: str = "distilgpt2"):
+def load_base_model(model_name: str = "google/flan-t5-small"):
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
-    model = AutoModelForCausalLM.from_pretrained(model_name)
+    model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
     model.config.pad_token_id = tokenizer.pad_token_id
     return model, tokenizer
 
 
-def load_fine_tuned_model(adapter_dir: str, base_model_name: str = "distilgpt2"):
+def load_fine_tuned_model(adapter_dir: str, base_model_name: str = "google/flan-t5-small"):
     base_model, tokenizer = load_base_model(base_model_name)
     peft_model = PeftModel.from_pretrained(base_model, adapter_dir)
     peft_model.eval()
@@ -26,16 +26,10 @@ def load_fine_tuned_model(adapter_dir: str, base_model_name: str = "distilgpt2")
 
 
 def _extract_answer(decoded_output: str) -> str:
-    text = decoded_output
-    if "Answer:" in text:
-        text = text.split("Answer:", 1)[1]
+    text = decoded_output.strip()
+    text = text.split("\nQuestion:", 1)[0].strip()
+    text = text.split("\n", 1)[0].strip()
 
-    # Remove spillover text if the model starts another field.
-    text = text.split("\nQuestion:", 1)[0]
-    text = text.split("\n", 1)[0]
-    text = text.strip()
-
-    # Keep up to three sentences to match dataset answer-length diversity.
     sentence_split = re.split(r"(?<=[.!?])\s+", text)
     clipped = [s.strip() for s in sentence_split if s.strip()][:3]
     if clipped:
@@ -71,6 +65,8 @@ def generate_answer(
             gen_kwargs["temperature"] = generation_config.get("temperature", 0.7)
             gen_kwargs["top_k"] = generation_config.get("top_k", 50)
             gen_kwargs["top_p"] = generation_config.get("top_p", 0.9)
+        else:
+            gen_kwargs["num_beams"] = generation_config.get("num_beams", 4)
 
         output_ids = model.generate(**inputs, **gen_kwargs)
 

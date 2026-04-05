@@ -28,7 +28,7 @@ def print_sample_comparisons(samples):
 
 def print_limitations():
     print("\n=== LIMITATIONS ===")
-    print("1. Small curated + synthetic hybrid dataset creates overfitting risk.")
+    print("1. Template-driven data can still overfit to phrasing patterns.")
     print("2. Generative metrics (BLEU/ROUGE) are useful but not fully reliable for factual correctness.")
 
 
@@ -46,12 +46,12 @@ def main():
 
     dataset_path = os.path.join(data_dir, "dataset.json")
 
-    print("\n[1/6] Creating curated + synthetic hybrid dataset and 80/10/10 splits...")
+    print("\n[1/6] Creating structured QA dataset and 80/10/10 splits...")
     dataset_dict = create_dataset_splits(
         dataset_path=dataset_path,
         processed_dir=processed_dir,
         total_samples=1100,
-        force_regenerate=False,
+        force_regenerate=True,
     )
 
     print(
@@ -59,13 +59,13 @@ def main():
         f"Test: {len(dataset_dict['test'])}"
     )
 
-    print("\n[2/6] Tokenizing dataset for causal language modeling...")
+    print("\n[2/6] Tokenizing dataset for seq2seq fine-tuning...")
     train_config = TrainConfig(
-        model_name="distilgpt2",
+        model_name="google/flan-t5-small",
         output_dir=models_dir,
         logs_dir=os.path.join(outputs_dir, "logs"),
-        learning_rate=2e-5,
-        num_train_epochs=2,
+        learning_rate=1e-4,
+        num_train_epochs=5,
         per_device_train_batch_size=2,
         per_device_eval_batch_size=2,
         gradient_accumulation_steps=4,
@@ -86,13 +86,14 @@ def main():
     )
 
     generation_config = {
-        "max_new_tokens": 32,
+        "max_new_tokens": 48,
         "temperature": 0.7,
         "top_k": 50,
         "top_p": 0.9,
         "do_sample": False,
-        "repetition_penalty": 1.2,
+        "repetition_penalty": 1.1,
         "no_repeat_ngram_size": 3,
+        "num_beams": 4,
     }
 
     print("\n[5/6] Evaluating base vs fine-tuned model on held-out test set...")
@@ -114,8 +115,6 @@ def main():
     print("\nOutputs saved in outputs/:")
     print("- predictions.csv")
     print("- metrics_comparison.csv")
-    print("- human_eval_base.csv")
-    print("- human_eval_finetuned.csv")
     print("- sample_comparisons.csv")
 
 

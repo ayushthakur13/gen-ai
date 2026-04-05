@@ -1,13 +1,14 @@
 import json
 import os
 import random
-from typing import Dict, List, Tuple
+from typing import Dict, List
 
 from datasets import Dataset, DatasetDict
 
 
 SEED = 42
-random.seed(SEED)
+RNG = random.Random(SEED)
+UPGRADED_SAMPLE_COUNT = 80
 
 
 CONCEPT_KB: List[Dict[str, str]] = [
@@ -224,43 +225,108 @@ CONCEPT_KB: List[Dict[str, str]] = [
 ]
 
 
+QUESTION_TEMPLATES = {
+    "definition": [
+        "What is {concept} in AI/ML?",
+        "Define {concept} in one sentence.",
+        "How would you explain {concept}?",
+        "What does {concept} mean?",
+        "Give a short definition of {concept}.",
+        "State the meaning of {concept}.",
+        "In one technical sentence, what is {concept}?",
+        "Explain {concept} briefly.",
+        "How is {concept} defined?",
+    ],
+    "example": [
+        "Give one example of {concept}.",
+        "What is a practical example of {concept}?",
+        "Show a real-world use of {concept}.",
+        "Name one application of {concept}.",
+        "Which example best illustrates {concept}?",
+        "Provide a simple example of {concept}.",
+        "Where do we see {concept} in practice?",
+        "What is a common use case for {concept}?",
+        "Give a concise example that shows {concept}.",
+    ],
+    "contrast": [
+        "How does {concept} differ from a related approach?",
+        "What is one key difference between {concept} and a similar method?",
+        "Compare {concept} with a close alternative.",
+        "What makes {concept} different from related ideas?",
+        "In what way is {concept} not the same as a similar concept?",
+        "Give one contrast between {concept} and a related technique.",
+        "How can you distinguish {concept} from another ML approach?",
+        "What is the main distinction for {concept}?",
+        "Describe one difference between {concept} and a nearby alternative.",
+    ],
+    "practical": [
+        "Why is {concept} useful in practice?",
+        "When would {concept} matter in an ML workflow?",
+        "How does {concept} help in real projects?",
+        "What is the practical value of {concept}?",
+        "Why do engineers use {concept}?",
+        "How would {concept} be applied in an AI system?",
+        "What role does {concept} play in practice?",
+        "Why should an AI student learn {concept}?",
+        "What is a practical reason to use {concept}?",
+    ],
+}
+
+
+UPGRADED_QUESTION_TEMPLATES = {
+    "technical_definition": [
+        "In LLMs, what does {concept} mean during model behavior?",
+        "For transformer-based NLP systems, define {concept} using technical terminology.",
+        "In modern AI pipelines, what is the technical meaning of {concept}?",
+        "In language-model training or inference, what does {concept} specifically refer to?",
+    ],
+    "technical_example": [
+        "Give a technically precise definition of {concept} and include one concrete example.",
+        "Explain {concept} and include a specific real-world ML or LLM example.",
+        "For an exam-style answer, define {concept} and add one practical example.",
+        "In production AI workflows, what is {concept} and what is one concrete use case?",
+    ],
+    "technical_contrast": [
+        "Differentiate {concept} from a closely related method using precise terminology.",
+        "In one concise technical answer, how does {concept} differ from nearby alternatives?",
+        "In model design terms, what is the key distinction for {concept}?",
+        "What technical trade-off best distinguishes {concept} from related approaches?",
+    ],
+}
+
+
 def _normalize_question(text: str) -> str:
     return " ".join(text.strip().lower().split())
 
 
-def _build_answer_variants(item: Dict[str, str], mode: str) -> List[str]:
+def _build_answer(item: Dict[str, str], mode: str) -> str:
     concept = item["concept"]
     definition = item["definition"]
     example = item["example"]
     contrast = item["contrast"]
 
     if mode == "definition":
-        return [
-            f"{concept} is {definition}.",
-            f"In AI/ML, {concept} refers to {definition}.",
-            f"{concept} can be defined as {definition}.",
-        ]
+        return f"{concept} is {definition}."
 
     if mode == "example":
-        return [
-            f"A concise example is {example}.",
-            f"A practical example of {concept} is {example}.",
-            f"One common use case is {example}.",
-        ]
+        return f"A practical example of {concept} is {example}."
 
     if mode == "contrast":
-        return [
-            f"A key difference is that {contrast}.",
-            f"Compared with related alternatives, {contrast}.",
-            f"The main distinction is that {contrast}.",
-        ]
+        return f"{concept} differs from related approaches because {contrast}."
 
-    # Rich answer style with controlled length diversity.
-    return [
-        f"{concept} is {definition}.",
-        f"{concept} is {definition}. A practical example is {example}.",
-        f"{concept} is {definition}. A practical example is {example}. It differs from close alternatives because {contrast}.",
-    ]
+    if mode == "technical_definition":
+        return f"{concept} is {definition}."
+
+    if mode == "technical_example":
+        return f"{concept} is {definition}. For example, {example}."
+
+    if mode == "technical_contrast":
+        return (
+            f"{concept} is {definition}. A key distinction is that {contrast}. "
+            f"For example, {example}."
+        )
+
+    return f"{concept} is {definition}. For example, {example}."
 
 
 def _build_curated_examples() -> List[Dict[str, str]]:
@@ -271,20 +337,16 @@ def _build_curated_examples() -> List[Dict[str, str]]:
 
         curated_questions = [
             f"What is {concept} in AI/ML?",
-            f"Give a concise example of {concept}.",
-            f"How is {concept} different from a related alternative?",
-            f"Define {concept} in one technical sentence.",
-            f"Explain {concept} with a practical example.",
-            f"When should {concept} be preferred in ML workflows?",
+            f"Give one example of {concept}.",
+            f"How is {concept} different from a related approach?",
+            f"Why is {concept} useful in practice?",
         ]
 
         curated_answers = [
-            random.choice(_build_answer_variants(item, "definition")),
-            random.choice(_build_answer_variants(item, "example")),
-            random.choice(_build_answer_variants(item, "contrast")),
-            random.choice(_build_answer_variants(item, "definition")),
-            random.choice(_build_answer_variants(item, "example")),
-            random.choice(_build_answer_variants(item, "rich")),
+            _build_answer(item, "definition"),
+            _build_answer(item, "example"),
+            _build_answer(item, "contrast"),
+            _build_answer(item, "practical"),
         ]
 
         for q, a in zip(curated_questions, curated_answers):
@@ -293,91 +355,59 @@ def _build_curated_examples() -> List[Dict[str, str]]:
     return examples
 
 
+def _build_upgraded_examples(target_size: int) -> List[Dict[str, str]]:
+    upgraded: List[Dict[str, str]] = []
+    seen_questions = set()
+
+    modes = list(UPGRADED_QUESTION_TEMPLATES.keys())
+    max_attempts = target_size * 20
+
+    for index in range(max_attempts):
+        if len(upgraded) >= target_size:
+            break
+
+        item = CONCEPT_KB[index % len(CONCEPT_KB)]
+        mode = modes[(index // len(CONCEPT_KB)) % len(modes)]
+        templates = UPGRADED_QUESTION_TEMPLATES[mode]
+        template = templates[(index // (len(CONCEPT_KB) * len(modes))) % len(templates)]
+
+        question = template.format(**item)
+        answer = _build_answer(item, mode)
+
+        question_key = _normalize_question(question)
+        if question_key in seen_questions:
+            continue
+
+        seen_questions.add(question_key)
+        upgraded.append({"question": question, "answer": answer})
+
+    if len(upgraded) < target_size:
+        raise RuntimeError(
+            f"Could not generate enough upgraded samples: "
+            f"requested={target_size}, generated={len(upgraded)}"
+        )
+
+    return upgraded
+
+
 def _build_synthetic_examples(target_size: int) -> List[Dict[str, str]]:
-    templates: List[Tuple[str, str]] = [
-        (
-            "Explain {concept} in one technical sentence.",
-            "definition",
-        ),
-        (
-            "Why is {concept} important in modern AI systems?",
-            "rich",
-        ),
-        (
-            "Differentiate {concept} from a close alternative in ML.",
-            "contrast",
-        ),
-        (
-            "What practical use case best illustrates {concept}?",
-            "example",
-        ),
-        (
-            "Provide a concise QA-style definition for {concept}.",
-            "definition",
-        ),
-        (
-            "Describe {concept} for an AI student and include one use case.",
-            "rich",
-        ),
-        (
-            "What is the key intuition behind {concept}?",
-            "definition",
-        ),
-        (
-            "In what way does {concept} affect model behavior?",
-            "rich",
-        ),
-        (
-            "Give a short exam-ready answer for {concept}.",
-            "definition",
-        ),
-        (
-            "What is one limitation or trade-off related to {concept}?",
-            "contrast",
-        ),
-    ]
-
-    contexts = [
-        "for interview preparation",
-        "for a university assignment",
-        "for a beginner in AI",
-        "for practical deployment",
-        "for exam revision",
-        "for model evaluation",
-        "in production ML workflows",
-        "in LLM application design",
-    ]
-
-    styles = [
-        "in 1-2 sentences",
-        "using concise technical wording",
-        "with one concrete example",
-        "without unnecessary jargon",
-        "with focus on model behavior",
-        "with emphasis on trade-offs",
-        "in a concise classroom style",
-        "as if answering an interview question",
-        "in a practical engineering tone",
-        "for quick revision notes",
-        "for first-year ML students",
-        "for technical documentation",
-    ]
-
     synthetic: List[Dict[str, str]] = []
     seen_questions = set()
 
-    max_attempts = target_size * 30
-    attempts = 0
+    modes = list(QUESTION_TEMPLATES.keys())
+    max_attempts = target_size * 10
 
-    while len(synthetic) < target_size and attempts < max_attempts:
-        attempts += 1
-        item = random.choice(CONCEPT_KB)
-        q_template, answer_mode = random.choice(templates)
-        context = random.choice(contexts)
-        style = random.choice(styles)
+    for index in range(max_attempts):
+        if len(synthetic) >= target_size:
+            break
 
-        question = f"{q_template.format(**item)} {style} {context}."
-        answer = random.choice(_build_answer_variants(item, answer_mode))
+        item = CONCEPT_KB[index % len(CONCEPT_KB)]
+        mode = modes[(index // len(CONCEPT_KB)) % len(modes)]
+        templates = QUESTION_TEMPLATES[mode]
+        template = templates[(index // (len(CONCEPT_KB) * len(modes))) % len(templates)]
+
+        question = template.format(**item)
+        answer = _build_answer(item, mode)
 
         question_key = _normalize_question(question)
         if question_key in seen_questions:
@@ -396,19 +426,20 @@ def _build_synthetic_examples(target_size: int) -> List[Dict[str, str]]:
 
 
 def build_hybrid_dataset(total_samples: int = 650) -> List[Dict[str, str]]:
-    """
-    Build a curated + synthetic hybrid dataset for AI/ML/LLM QA.
-    """
+    """Build a small curated core plus deterministic template-based expansion."""
     curated = _build_curated_examples()
 
     curated_target = int(total_samples * 0.35)
     curated = curated[:curated_target]
 
-    synthetic_target = total_samples - len(curated)
+    upgraded_target = min(UPGRADED_SAMPLE_COUNT, max(0, total_samples - len(curated)))
+    upgraded = _build_upgraded_examples(target_size=upgraded_target)
+
+    synthetic_target = total_samples - len(curated) - len(upgraded)
     synthetic = _build_synthetic_examples(target_size=synthetic_target)
 
-    combined = curated + synthetic
-    random.shuffle(combined)
+    combined = curated + upgraded + synthetic
+    RNG.shuffle(combined)
     return combined
 
 

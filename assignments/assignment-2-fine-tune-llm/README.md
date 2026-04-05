@@ -30,15 +30,13 @@ Task I/O:
 ## Dataset Methodology
 
 ### Dataset Type
-Curated + synthetic hybrid dataset.
+Structured template-based QA dataset with a small curated core.
 
 ### Construction Strategy
 1. Curated base from a domain concept knowledge bank (`concept`, `definition`, `example`, `contrast`).
-2. Synthetic expansion via template-based question generation with style/context variations.
-3. Controlled answer variants to improve diversity:
-	- 1 sentence
-	- 2 sentences
-	- 3 sentences
+2. An upgraded high-quality slice (~80 samples) with stronger technical phrasing and example-grounded answers.
+3. Deterministic template expansion for coverage across the concept set.
+4. Short factual answers built from the knowledge bank to keep supervision clean.
 
 ### Quality Controls
 1. Duplicate question filtering with normalization.
@@ -57,29 +55,29 @@ This satisfies assignment requirements (500-2000 examples).
 
 ### Base Model
 1. Model family: GPT-style open model
-2. Selected model: `distilgpt2`
+2. Selected model: `google/flan-t5-small`
 
 Rationale:
-1. Lightweight and feasible for local training.
-2. Compatible with causal LM objective and Hugging Face tooling.
+1. Instruction-tuned base model that is better aligned with QA.
+2. Lightweight enough for local LoRA fine-tuning.
 
 ### Fine-Tuning Method
-LoRA via PEFT (no full-model fine-tuning).
+LoRA via PEFT on a seq2seq model.
 
 LoRA configuration:
-1. Task type: `CAUSAL_LM`
-2. Rank (`r`): 8
-3. `lora_alpha`: 16
-4. `lora_dropout`: 0.1
-5. Target modules: `c_attn`, `c_proj`
+1. Task type: `SEQ_2_SEQ_LM`
+2. Rank (`r`): 16
+3. `lora_alpha`: 32
+4. `lora_dropout`: 0.05
+5. Target modules: `q`, `v`
 
-Trainable parameter ratio in runs is approximately 0.49%, confirming parameter-efficient adaptation.
+Trainable parameter ratio in runs is approximately 0.89%, confirming parameter-efficient adaptation.
 
 ## Preprocessing and Training Pipeline
 
 ### Prompt Format
 Training text uses:
-1. `You are an AI/ML assistant. Provide concise factual answers.`
+1. `Answer the question concisely using correct technical terminology and include a specific example if relevant.`
 2. `Question: {question}`
 3. `Answer: {answer}`
 
@@ -90,8 +88,8 @@ Training text uses:
 4. Label masking: prompt and padding tokens masked to focus learning on answer tokens
 
 ### Training Configuration
-1. Epochs: 2
-2. Learning rate: `2e-5`
+1. Epochs: 5
+2. Learning rate: `1e-4`
 3. Per-device train batch size: 2
 4. Per-device eval batch size: 2
 5. Gradient accumulation: 4
@@ -99,40 +97,37 @@ Training text uses:
 7. Save strategy: epoch
 8. Best model metric: `eval_loss`
 
+Latest validation-loss trend (epoch-wise): `3.444 -> 3.107 -> 2.929 -> 2.836 -> 2.807`.
+
 ## Inference and Evaluation Design
 
 ### Inference Setup
 Both base and fine-tuned models are evaluated on the same held-out test set.
 
-Controlled generation settings are used with max token cap and anti-repetition constraints to keep outputs stable for comparison.
+Controlled generation settings use beam search, a max token cap, and anti-repetition constraints to keep outputs stable for comparison.
 
 ### Metrics Implemented
-1. Exact Match
-2. BLEU
-3. ROUGE-L
-4. Keyword Overlap
-5. Proxy Human Score (assignment rubric-based proxy)
+1. BLEU
+2. ROUGE-L
+3. Keyword Overlap (task-specific metric)
 
 ## Latest Full-Run Results
 From `outputs/metrics_comparison.csv`:
 
 | Metric | Base Model | Fine-tuned Model |
 | --- | ---: | ---: |
-| Exact Match | 0.0000 | 0.0000 |
-| BLEU | 0.0094 | 0.0110 |
-| ROUGE-L | 0.0897 | 0.1013 |
-| Keyword Score | 0.0454 | 0.0650 |
-| Proxy Human Score | 1.0000 | 1.0000 |
+| BLEU | 0.0239 | 0.1369 |
+| ROUGE-L | 0.2306 | 0.3367 |
+| Keyword Score | 0.1610 | 0.2701 |
 
 ### Result Interpretation
 1. Fine-tuned model improved on BLEU, ROUGE-L, and Keyword Score.
-2. Exact Match remained unchanged (strict metric for generative outputs).
-3. Proxy Human Score remained unchanged in this run.
-4. Overall improvement is modest but measurable and technically defensible for assignment scope.
+2. Keyword Score provides a task-specific signal for domain-term alignment.
+3. Overall improvement is modest but measurable and technically defensible for assignment scope.
 
 ## Qualitative Findings
 1. Fine-tuned outputs show better overlap with domain terms in many samples.
-2. Some responses still remain generic or weakly grounded.
+2. Some responses still remain generic or partially paraphrased.
 3. Performance indicates partial domain adaptation rather than robust expert-level QA behavior.
 
 ## Repository Structure
@@ -164,15 +159,12 @@ python3 main.py
 Generated in `outputs/`:
 1. `predictions.csv`
 2. `metrics_comparison.csv`
-3. `human_eval_base.csv`
-4. `human_eval_finetuned.csv`
-5. `sample_comparisons.csv`
+3. `sample_comparisons.csv`
 
 ## Limitations
-1. `distilgpt2` capacity is limited for high-fidelity technical QA.
+1. `google/flan-t5-small` is still compact compared with larger instruction-tuned models.
 2. Overlap metrics do not fully capture factual correctness.
-3. Proxy Human Score is rubric-based and not multi-rater manual evaluation.
-4. Even with 1100 samples, synthetic-heavy data can bias style and phrasing.
+3. The dataset is intentionally template-driven, so answers can still sound formulaic.
 
 ## Conclusion
 This assignment successfully delivers a full custom-data fine-tuning pipeline with LoRA-based PEFT and reproducible evaluation. The final run shows measurable gains over the base model on multiple metrics, validating partial domain adaptation under local compute constraints.

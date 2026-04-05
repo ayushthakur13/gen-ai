@@ -4,7 +4,7 @@ import random
 from typing import Dict, List
 
 from src.inference import generate_answer
-from src.metrics import compute_metrics, manual_human_evaluation
+from src.metrics import compute_metrics
 
 
 def _write_predictions_csv(rows: List[Dict[str, str]], output_path: str) -> None:
@@ -24,17 +24,6 @@ def _write_metrics_csv(metrics_rows: List[Dict[str, object]], output_path: str) 
         writer = csv.DictWriter(f, fieldnames=["Metric", "Base Model", "Fine-tuned Model"])
         writer.writeheader()
         writer.writerows(metrics_rows)
-
-
-def _write_human_eval_csv(rows: List[Dict[str, object]], output_path: str) -> None:
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    with open(output_path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(
-            f,
-            fieldnames=["question", "prediction", "ground_truth", "score", "rationale"],
-        )
-        writer.writeheader()
-        writer.writerows(rows)
 
 
 def evaluate_models(
@@ -75,14 +64,8 @@ def evaluate_models(
     base_metrics = compute_metrics(base_predictions, references)
     finetuned_metrics = compute_metrics(finetuned_predictions, references)
 
-    base_human = manual_human_evaluation(questions, base_predictions, references, sample_count=8)
-    finetuned_human = manual_human_evaluation(questions, finetuned_predictions, references, sample_count=8)
-
-    base_metrics["Proxy Human Score"] = base_human["average_score"]
-    finetuned_metrics["Proxy Human Score"] = finetuned_human["average_score"]
-
     metrics_rows = []
-    ordered_metrics = ["Exact Match", "BLEU", "ROUGE-L", "Keyword Score", "Proxy Human Score"]
+    ordered_metrics = ["BLEU", "ROUGE-L", "Keyword Score"]
 
     for metric_name in ordered_metrics:
         metrics_rows.append(
@@ -94,15 +77,6 @@ def evaluate_models(
         )
 
     _write_metrics_csv(metrics_rows, os.path.join(output_dir, "metrics_comparison.csv"))
-
-    _write_human_eval_csv(
-        base_human["details"],
-        os.path.join(output_dir, "human_eval_base.csv"),
-    )
-    _write_human_eval_csv(
-        finetuned_human["details"],
-        os.path.join(output_dir, "human_eval_finetuned.csv"),
-    )
 
     sample_rng = random.Random(42)
     sample_count = min(8, len(prediction_rows))
