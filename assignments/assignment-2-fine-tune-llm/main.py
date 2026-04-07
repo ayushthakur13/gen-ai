@@ -2,7 +2,7 @@ import os
 
 from src.data_loader import create_dataset_splits
 from src.evaluate import evaluate_models
-from src.inference import load_base_model, load_fine_tuned_model
+from src.inference import generate_answer, load_base_model, load_fine_tuned_model
 from src.preprocess import tokenize_dataset
 from src.train import TrainConfig, train_lora_model
 
@@ -30,6 +30,32 @@ def print_limitations():
     print("\n=== LIMITATIONS ===")
     print("1. Template-driven data can still overfit to phrasing patterns.")
     print("2. Generative metrics (BLEU/ROUGE) are useful but not fully reliable for factual correctness.")
+
+
+def run_interactive_demo(
+    base_model,
+    base_tokenizer,
+    adapter_model,
+    adapter_tokenizer,
+    generation_config,
+):
+    print("\n=== INTERACTIVE DEMO (Base vs Adapter) ===")
+    print("Type your question and press Enter.")
+    print("Type 'exit' or 'quit' to stop the demo.\n")
+
+    while True:
+        question = input("You: ").strip()
+        if not question:
+            continue
+        if question.lower() in {"exit", "quit"}:
+            print("Demo ended.")
+            break
+
+        base_answer = generate_answer(base_model, base_tokenizer, question, generation_config)
+        adapter_answer = generate_answer(adapter_model, adapter_tokenizer, question, generation_config)
+
+        print(f"Base Model   : {base_answer}")
+        print(f"Adapter Model: {adapter_answer}\n")
 
 
 def main():
@@ -75,8 +101,19 @@ def main():
     base_model, tokenizer = load_base_model(train_config.model_name)
     tokenized = tokenize_dataset(dataset_dict, tokenizer, max_length=train_config.max_length)
 
-    print("\n[3/6] Fine-tuning with LoRA adapters (PEFT)...")
-    train_output = train_lora_model(tokenized, train_config)
+    adapter_dir = os.path.join(models_dir, "lora_adapter")
+    adapter_config_path = os.path.join(adapter_dir, "adapter_config.json")
+
+    print("\n[3/6] Preparing fine-tuned adapter (reuse saved adapter if available)...")
+    if os.path.exists(adapter_config_path):
+        print(f"Found saved adapter at: {adapter_dir}")
+        train_output = {
+            "adapter_dir": adapter_dir,
+            "base_model_name": train_config.model_name,
+        }
+    else:
+        print("No saved adapter found. Running LoRA fine-tuning...")
+        train_output = train_lora_model(tokenized, train_config)
 
     print("\n[4/6] Loading base and fine-tuned models for evaluation...")
     base_model, base_tokenizer = load_base_model(train_output["base_model_name"])
@@ -116,6 +153,14 @@ def main():
     print("- predictions.csv")
     print("- metrics_comparison.csv")
     print("- sample_comparisons.csv")
+
+    run_interactive_demo(
+        base_model=base_model,
+        base_tokenizer=base_tokenizer,
+        adapter_model=finetuned_model,
+        adapter_tokenizer=finetuned_tokenizer,
+        generation_config=generation_config,
+    )
 
 
 if __name__ == "__main__":
